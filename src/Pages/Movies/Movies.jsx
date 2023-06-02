@@ -19,17 +19,15 @@ export default function Movies() {
     if (query === '') {
       return;
     }
+    setStatus('pending');
     fetchSearch(query).then(response => {
-      console.log(response);
       if (response.results.length === 0) {
         setStatus('rejected');
       } else {
         setStatus('resolved');
         setMovies(response.results);
       }
-      console.log(response);
     });
-    console.log(query);
   }, [query]);
 
   return (

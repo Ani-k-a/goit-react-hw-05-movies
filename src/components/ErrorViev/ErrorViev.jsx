@@ -3,7 +3,11 @@ import css from './ErrorViev.module.css';
 import PropTypes from 'prop-types';
 
 export function ErrorViev({ message }) {
-  return <div className={css.title}>{message}</div>;
+  return (
+    <section className={css.section}>
+      <div className={css.title}>{message}</div>
+    </section>
+  );
 }
 
 ErrorViev.propTypes = {

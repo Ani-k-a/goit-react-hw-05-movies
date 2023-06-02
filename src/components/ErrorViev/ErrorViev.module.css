@@ -1,4 +1,6 @@
+.section {
+  padding: 100px 20px;
+}
 .title {
-  padding: 20px;
   color: red;
 }

@@ -9,14 +9,39 @@ const fetchPopular = async () => {
     return data;
 };
 
-const fetchSearch = async () => {
-    const response = await axios.get(`/3/search/movie?api_key=${API_KEY}`);
+const fetchSearch = async (query) => {
+    const response = await axios.get(`/3/search/movie?api_key=${API_KEY}&query=${query}&include_adult=false&language=en-US&page=1`);
     const data = await response.data;
+    console.log(data)
+    return data;
+};
+
+const fetchMovieInfo = async (movie_id) => {
+    const response = await axios.get(`/3/search/movie/${movie_id}?api_key=${API_KEY}`);
+    const data = await response.data;
+    console.log(data)
+    return data;
+}
+
+const fetchMovieActors = async (movie_id) => {
+    const response = await axios.get(`/3/search/movie/${movie_id}/credits?api_key=${API_KEY}`);
+    const data = await response.data;
+    console.log(data)
+    return data;
+}
+
+const fetchMovieRevievs = async (movie_id) => {
+    const response = await axios.get(`/3/search/movie/${movie_id}/reviews?api_key=${API_KEY}`);
+    const data = await response.data;
+    console.log(data)
     return data;
 }
 
 
 export {
     fetchPopular,
-    fetchSearch
+    fetchSearch,
+    fetchMovieInfo,
+    fetchMovieActors,
+    fetchMovieRevievs
 }
