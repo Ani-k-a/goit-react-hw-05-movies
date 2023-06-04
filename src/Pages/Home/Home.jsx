@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import css from './Home.module.css';
 import { fetchPopular } from 'Services/api.js';
 import MoviesList from 'components/MoviesList.jsx/MoviesList';
-import { ErrorViev } from 'components/ErrorViev/ErrorViev';
-import { Loader } from 'components/Loader/Loader';
+import ErrorViev from 'components/ErrorViev/ErrorViev';
+import Loader from 'components/Loader/Loader';
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -18,7 +18,6 @@ export default function Home() {
         setStatus('resolved');
         setMovies(response.results);
       }
-      // console.log(response);
     });
   }, []);
 

@@ -4,6 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 import css from './SearchForm.module.css';
 import * as yup from 'yup';
 import PropTypes from 'prop-types';
+import { useSearchParams } from 'react-router-dom';
 
 const schema = yup.object().shape({
   search: yup.string().min(2).required(),
@@ -12,10 +13,15 @@ const schema = yup.object().shape({
 const initialValues = {
   search: '',
 };
-export function SearchFoarm({ submitForm }) {
+
+export default function SearchFoarm({ submitForm }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams);
+
   const handleSubmit = (values, { resetForm }) => {
     const { search } = values;
     submitForm(search);
+    setSearchParams({ query: search });
     resetForm();
   };
   return (
